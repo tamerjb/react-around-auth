@@ -8,7 +8,7 @@
 
 ### Project features
 
-- React Frontend Development
+- React
 - API
 - Javascript ES6 Classes
 - Webpack, Postcss, Babel
