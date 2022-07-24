@@ -1,8 +1,8 @@
 .header {
     max-width: 880px;
-    margin: 45px auto 0;
+    margin: 0 auto 0;
     border-bottom: rgba(84, 84, 84, 0.7) solid 1px;
-    padding: 0;
+    padding: 45px 0 0 0;
 }
 
 .header__logo {

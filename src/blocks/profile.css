@@ -51,7 +51,7 @@
     height: 100%;
     width: 100%;
     object-fit: cover;
-    visibility: hidden;
+    /* visibility: hidden; */
 }
 
 .profile__person {
