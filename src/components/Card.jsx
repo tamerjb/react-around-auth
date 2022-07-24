@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import { api } from "../utils/api";
+import React, { useState } from "react";
 
 const Card = (props) => {
   const [likesCount, setLikesCount] = useState(0);
@@ -7,12 +6,17 @@ const Card = (props) => {
   function handleClick() {
     props.onCardClick(props.card);
   }
+  function handleDelete() {
+    props.onDeleteClick(props.card);
+  }
+
   return (
     <li className="card">
       <button
         type="button"
         aria-label="delete card"
         className="card__image-trash"
+        onClick={handleDelete}
       />
       <img
         src={props.card.link}

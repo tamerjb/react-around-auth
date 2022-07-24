@@ -8,7 +8,11 @@ const ImagePopup = (props) => {
           onClick={props.onClose}
           type="button"
         />
-        <img src={props.card.link} alt="#" className="popup__image" />
+        <img
+          src={props.card.link}
+          alt={props.card.name}
+          className="popup__image"
+        />
         <p className="popup__caption">{props.card.name}</p>
       </div>
     </div>
