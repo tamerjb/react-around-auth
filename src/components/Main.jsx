@@ -15,6 +15,7 @@ const Main = (props) => {
         setUserName(res.name);
         setUserDescription(res.about);
         setUserAvatar(res.avatar);
+        // setLikesCount(res.likes);
       })
       .catch(console.log);
   }, []);
@@ -24,6 +25,7 @@ const Main = (props) => {
       .getInitialCards()
       .then((res) => {
         setCards(res);
+        // setLikesCount(res.likes);
       })
       .catch(console.log);
   }, []);
@@ -37,7 +39,7 @@ const Main = (props) => {
         >
           <img
             src={userAvatar}
-            alt=" Profile Picture"
+            alt="Profile Picture"
             className="profile__image"
           />
         </div>

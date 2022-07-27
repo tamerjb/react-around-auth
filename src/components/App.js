@@ -44,9 +44,9 @@ function App() {
       link: card.link,
     });
   };
-  // Close Moudal
+  // Close Modal
   useEffect(() => {
-    const closeMoudle = (event) => {
+    const closeModal = (event) => {
       if (event.key === "Escape") {
         event.preventDefault();
         closeAllPopups();
@@ -55,11 +55,11 @@ function App() {
         closeAllPopups();
       }
     };
-    document.addEventListener("mousedown", closeMoudle);
-    document.addEventListener("keydown", closeMoudle);
+    document.addEventListener("mousedown", closeModal);
+    document.addEventListener("keydown", closeModal);
     return () => {
-      document.removeEventListener("mousedown", closeMoudle);
-      document.removeEventListener("keydown", closeMoudle);
+      document.removeEventListener("mousedown", closeModal);
+      document.removeEventListener("keydown", closeModal);
     };
   }, []);
 
