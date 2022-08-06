@@ -1,8 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const EditProfilePopup = ({ isOpen, onClose }) => {
+const EditProfilePopup = ({ isOpen, onClose, onUpdateUser }) => {
   const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
@@ -68,3 +68,4 @@ const EditProfilePopup = ({ isOpen, onClose }) => {
     </PopupWithForm>
   );
 };
+export default EditProfilePopup;

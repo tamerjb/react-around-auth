@@ -43,19 +43,33 @@ class Api {
       method: "DELETE",
     }).then(this._checkResponse);
   }
-  likeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      headers: this._headers,
-      method: "PUT",
-    }).then(this._checkResponse);
+  // likeCard(cardId) {
+  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+  //     headers: this._headers,
+  //     method: "PUT",
+  //   }).then(this._checkResponse);
+  // }
+
+  // dislikeCard(cardId) {
+  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+  //     headers: this._headers,
+  //     method: "DELETE",
+  //   }).then(this._checkResponse);
+  // }
+  changeLikeCardStatus(cardId, isLiked) {
+    if (!isLiked) {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        headers: this._headers,
+        method: "DELETE",
+      }).then(this._checkResponse);
+    } else {
+      return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
+        headers: this._headers,
+        method: "PUT",
+      }).then(this._checkResponse);
+    }
   }
 
-  dislikeCard(cardId) {
-    return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-      headers: this._headers,
-      method: "DELETE",
-    }).then(this._checkResponse);
-  }
   setUserAvatar(url) {
     return fetch(`${this._baseUrl}/users/me/avatar`, {
       headers: this._headers,

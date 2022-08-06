@@ -4,14 +4,14 @@ import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
 import ImagePopup from "./ImagePopup";
+import EditProfilePopup from "./EditProfilePopup";
+import DeletePopup from "./DeletePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 import { api } from "../utils/api";
 
 function App() {
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
-  const [isEditProfilePopupOpen, setisEditProfilePopupOpenPopupOpen] = useState(
-    false
-  );
+  const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
   const [isImagePreviewOpen, setIsImagePreviewOpen] = useState(false);
   const [isDeletePopupOpen, setIsDeletePopupOpen] = useState(false);
@@ -20,7 +20,7 @@ function App() {
     link: "",
   });
   const [cards, setCards] = useState([]);
-  const [currentUser, setIsCurrentUser] = useState("");
+  const [currentUser, setCurrentUser] = useState({});
   //state for loading
   const [isLoading, setIsLoading] = useState(false);
 
@@ -33,8 +33,9 @@ function App() {
   const handleAddPlaceClick = () => {
     setIsAddPlacePopupOpen(true);
   };
-  const handleDeleteClick = () => {
+  const handleDeleteClick = (card) => {
     setIsDeletePopupOpen(true);
+    setSelectedCard(card);
   };
   const closeAllPopups = () => {
     setIsEditAvatarPopupOpen(false);
@@ -73,7 +74,7 @@ function App() {
     api
       .deleteCard(selectedCard._id)
       .then((res) => {
-        setIsLoading(false);
+        // setIsLoading(false);
         const newCards = cards.filter(
           (currentCard) => currentCard._id !== selectedCard._id
         );
@@ -90,14 +91,27 @@ function App() {
       })
       .catch(console.log);
   }, []);
+
   useEffect(() => {
     api
       .getUserInfo()
       .then((user) => {
-        setIsCurrentUser(user);
+        setCurrentUser(user);
       })
       .catch(console.log);
   }, []);
+  const handleUpdateUser = ({ name, about }) => {
+    setIsLoading(true);
+    api
+      .setUserInfo({ name, about })
+      .then((res) => {
+        setIsLoading(false);
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch(console.log);
+  };
+
   // Close Modal
   useEffect(() => {
     const closeModal = (event) => {
@@ -127,6 +141,7 @@ function App() {
           onEditAvatarClick={handleEditAvatarClick}
           onCardClick={handleCardClick}
           onDeleteClick={handleDeleteClick}
+          onCardLike={handleCardLike}
           cards={cards}
         />
         <Footer />
@@ -192,12 +207,11 @@ function App() {
           </fieldset>
         </PopupWithForm>
 
-        <PopupWithForm
-          title="Are you sure?"
-          name="popup-type-delete-card"
-          buttonText="Yes"
+        <DeletePopup
+          isLoading={isLoading}
           isOpen={isDeletePopupOpen}
           onClose={closeAllPopups}
+          onSubmitDelete={handleCardDelete}
         />
 
         <ImagePopup
