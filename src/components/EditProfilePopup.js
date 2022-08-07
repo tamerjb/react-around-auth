@@ -40,7 +40,7 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
             id="name-input"
             type="text"
             name="name"
-            value={name}
+            value={name || ""}
             placeholder="Name"
             className="form__input form__input_type_profile-name"
             minLength="2"
@@ -61,6 +61,7 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
             maxLength="200"
             onChange={handleDescriptionChange}
             required
+            value={description || ""}
           />
           <span className="form__input-error title-input-error"></span>
         </div>

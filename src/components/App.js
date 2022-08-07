@@ -8,8 +8,7 @@ import EditAvatarPopup from "./EditAvatarPopup";
 import AddPlacePopup from "./AddPlacePopup";
 import DeletePopup from "./DeletePopup";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
-import { api } from "../utils/api";
-
+import api from "../utils/api";
 function App() {
   //set States
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);

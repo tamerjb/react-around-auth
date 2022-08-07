@@ -36,6 +36,7 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
             minLength="1"
             maxLength="30"
             onChange={handleNameChange}
+            value={name || ""}
           />
           <span className="form__input-error place-title-input-error"></span>
         </div>
@@ -48,6 +49,7 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
             className="form__input form__input_type_place-url"
             required
             onChange={handleLinkChange}
+            value={link || ""}
           />
           <span className="form__input-error place-url-input-error"></span>
         </div>
