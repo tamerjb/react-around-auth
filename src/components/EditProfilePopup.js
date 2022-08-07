@@ -2,7 +2,7 @@ import React, { useEffect, useContext, useState } from "react";
 import PopupWithForm from "./PopupWithForm";
 import { CurrentUserContext } from "../contexts/CurrentUserContext";
 
-const EditProfilePopup = ({ isOpen, onClose, onUpdateUser }) => {
+const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
   const currentUser = useContext(CurrentUserContext);
 
   const [name, setName] = useState("");
@@ -32,7 +32,7 @@ const EditProfilePopup = ({ isOpen, onClose, onUpdateUser }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText="Save"
+      buttonText={`${isLoading ? "Saving..." : "Save"}`}
     >
       <fieldset className="form__fieldset">
         <div className="form__input-container">
