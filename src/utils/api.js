@@ -43,19 +43,7 @@ class Api {
       method: "DELETE",
     }).then(this._checkResponse);
   }
-  // likeCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-  //     headers: this._headers,
-  //     method: "PUT",
-  //   }).then(this._checkResponse);
-  // }
 
-  // dislikeCard(cardId) {
-  //   return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
-  //     headers: this._headers,
-  //     method: "DELETE",
-  //   }).then(this._checkResponse);
-  // }
   changeLikeCardStatus(cardId, isLiked) {
     if (!isLiked) {
       return fetch(`${this._baseUrl}/cards/likes/${cardId}`, {
@@ -83,10 +71,11 @@ class Api {
   // other methods for working with the API
 }
 
-export const api = new Api({
+const api = new Api({
   baseUrl: "https://around.nomoreparties.co/v1/cohort-3-en", //cohort-3-en
   headers: {
     authorization: "edde3a5c-b30d-40b0-99e9-6f72ee976ddf",
     "Content-Type": "application/json",
   },
 });
+export default api;
