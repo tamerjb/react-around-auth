@@ -27,7 +27,7 @@ const EditAvatarPopup = ({ isLoading, isOpen, onClose, onUpdateAvatar }) => {
             required
             ref={url}
           />
-          <span className="form__input-error avatar-input-error"></span>
+          <span className="form__input-error avatar-input-error" />
         </div>
       </fieldset>
     </PopupWithForm>
