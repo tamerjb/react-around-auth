@@ -16,8 +16,8 @@
 - Flat BEM file structure
 - Responsive and Adaptive WebDesign
 
-# Github Pages Link:
+# Github Pages Link (React Version):
 
-- [Link to the github pages link](https://tamerjb.github.io/web_project_4/)
+- [Link to the github pages link](https://tamerjb.github.io/around-react)
 
 ## Developer: Tamir JB
