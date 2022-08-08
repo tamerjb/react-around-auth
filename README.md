@@ -1,6 +1,10 @@
-# Project 10: Around The U.S.
+# Project 11: Around The U.S.
 
 ### Overview
+This project was built using React. Project includes a social platform that users can showcase their trips  , users can add/delete/like photos , edit avatar photo and editing the name , all the data fetched/update from same REST API .
+
+All the elements are displayed correctly on popular screen sizes. The main skill learned for this project is React.
+
 
 #### Design File Used:
 
@@ -8,13 +12,15 @@
 
 ### Project features
 
-- React
-- API
-- Javascript ES6 Classes
-- Webpack, Postcss, Babel
-- Javascript DOM manipulation
-- Flat BEM file structure
-- Responsive and Adaptive WebDesign
+
+-ReactJS
+-React Hooks (useState, useEffect, useRef, useContext)
+-Javascript 
+-Webpack, Postcss, Babel
+-Javascript DOM manipulation
+-Responsive and Adaptive Desgin
+-Flat BEM file structure
+-API 
 
 # Github Pages Link (React Version):
 
