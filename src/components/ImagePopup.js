@@ -1,4 +1,5 @@
 import React from "react";
+
 const ImagePopup = (props) => {
   return (
     <div className={`popup-prev popup ${props.isOpen ? "popup_opened" : ""}`}>

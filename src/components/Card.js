@@ -29,7 +29,7 @@ const Card = (props) => {
           aria-label="delete card"
           className="card__image-trash"
           onClick={handleDelete}
-        ></button>
+        />
       )}
       <img
         src={props.card.link}

@@ -77,36 +77,42 @@ function App() {
     api
       .deleteCard(selectedCard._id)
       .then((res) => {
-        setIsLoading(false);
         const newCards = cards.filter(
           (currentCard) => currentCard._id !== selectedCard._id
         );
         setCards(newCards);
         closeAllPopups();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   function handleUpdateAvatar(url) {
     setIsLoading(true);
     api
       .setUserAvatar(url)
       .then((res) => {
-        setIsLoading(false);
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
   function handleAddPlaceSubmit(card) {
     setIsLoading(true);
     api
       .createCard(card)
       .then((card) => {
-        setIsLoading(false);
         setCards([card, ...cards]);
         closeAllPopups();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   }
 
   //Api Calls
@@ -132,29 +138,40 @@ function App() {
     api
       .setUserInfo({ name, about })
       .then((res) => {
-        setIsLoading(false);
         setCurrentUser(res);
         closeAllPopups();
       })
-      .catch(console.log);
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
   };
 
-  // Close Modal ESC + Overlay
+  //Escape key close Modual
   useEffect(() => {
-    const closeModal = (event) => {
+    const handleKeyDown = (event) => {
       if (event.key === "Escape") {
-        event.preventDefault();
-        closeAllPopups();
-      } else if (event.target.classList.contains("popup")) {
-        event.preventDefault();
         closeAllPopups();
       }
     };
-    document.addEventListener("mousedown", closeModal);
-    document.addEventListener("keydown", closeModal);
+
+    document.addEventListener("keydown", handleKeyDown);
+
     return () => {
-      document.removeEventListener("mousedown", closeModal);
-      document.removeEventListener("keydown", closeModal);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
+  //Overlay  close Modual
+  useEffect(() => {
+    const handleMouseDown = (event) => {
+      if (event.target.classList.contains("popup")) {
+        closeAllPopups();
+      }
+    };
+
+    document.addEventListener("mousedown", handleMouseDown);
+    return () => {
+      document.removeEventListener("mousedown", handleMouseDown);
     };
   }, []);
 

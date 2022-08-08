@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import PopupWithForm from "./PopupWithForm";
 
 const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
@@ -14,6 +14,14 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
     e.preventDefault();
     onAddPlaceSubmit({ name, link });
   }
+  useEffect(() => {
+    if (isOpen) {
+      // reset name
+      setName("");
+      // reset link
+      setLink("");
+    }
+  }, [isOpen]);
 
   return (
     <PopupWithForm
@@ -21,7 +29,7 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
       name="popup-place"
       isOpen={isOpen}
       onClose={onClose}
-      buttonText={`${isLoading ? "Saving..." : "Create"}`}
+      buttonText={isLoading ? "Saving..." : "Create"}
       onSubmit={handleSubmit}
     >
       <fieldset className="form__fieldset">
@@ -36,9 +44,9 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
             minLength="1"
             maxLength="30"
             onChange={handleNameChange}
-            value={name || ""}
+            value={name}
           />
-          <span className="form__input-error place-title-input-error"></span>
+          <span className="form__input-error place-title-input-error" />
         </div>
         <div className="form__input-container">
           <input
@@ -49,9 +57,9 @@ const AddPlacePopup = ({ isLoading, isOpen, onClose, onAddPlaceSubmit }) => {
             className="form__input form__input_type_place-url"
             required
             onChange={handleLinkChange}
-            value={link || ""}
+            value={link}
           />
-          <span className="form__input-error place-url-input-error"></span>
+          <span className="form__input-error place-url-input-error" />
         </div>
       </fieldset>
     </PopupWithForm>

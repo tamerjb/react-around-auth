@@ -9,8 +9,13 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
   const [description, setDescription] = useState("");
 
   useEffect(() => {
-    setName(currentUser.name);
-    setDescription(currentUser.about);
+    if (!currentUser.name && !currentUser.about) {
+      setName(currentUser.name || "");
+      setDescription(currentUser.about || "");
+    } else {
+      setName(currentUser.name);
+      setDescription(currentUser.about);
+    }
   }, [currentUser]);
   const handleNameChange = (e) => {
     setName(e.target.value);
@@ -32,7 +37,7 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
       isOpen={isOpen}
       onClose={onClose}
       onSubmit={handleSubmit}
-      buttonText={`${isLoading ? "Saving..." : "Save"}`}
+      buttonText={isLoading ? "Saving..." : "Save"}
     >
       <fieldset className="form__fieldset">
         <div className="form__input-container">
@@ -40,7 +45,7 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
             id="name-input"
             type="text"
             name="name"
-            value={name || ""}
+            value={name}
             placeholder="Name"
             className="form__input form__input_type_profile-name"
             minLength="2"
@@ -48,7 +53,7 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
             onChange={handleNameChange}
             required
           />
-          <span className="form__input-error name-input-error"></span>
+          <span className="form__input-error name-input-error" />
         </div>
         <div className="form__input-container">
           <input
@@ -61,9 +66,9 @@ const EditProfilePopup = ({ isLoading, isOpen, onClose, onUpdateUser }) => {
             maxLength="200"
             onChange={handleDescriptionChange}
             required
-            value={description || ""}
+            value={description}
           />
-          <span className="form__input-error title-input-error"></span>
+          <span className="form__input-error title-input-error" />
         </div>
       </fieldset>
     </PopupWithForm>
