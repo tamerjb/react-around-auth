@@ -13,14 +13,14 @@ All the elements are displayed correctly on popular screen sizes. The main skill
 ### Project features
 
 
--ReactJS
--React Hooks (useState, useEffect, useRef, useContext)
--Javascript 
--Webpack, Postcss, Babel
--Javascript DOM manipulation
--Responsive and Adaptive Desgin
--Flat BEM file structure
--API 
+- ReactJS
+- React Hooks (useState, useEffect, useRef, useContext)
+- Javascript 
+- Webpack, Postcss, Babel
+- Javascript DOM manipulation
+- Responsive and Adaptive Desgin
+- Flat BEM file structure
+- API 
 
 # Github Pages Link (React Version):
 
