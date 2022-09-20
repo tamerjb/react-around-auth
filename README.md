@@ -1,7 +1,5 @@
 # Project 14: Around The U.S.
 
-test
-
 ### Overview
 
 #### Design File Used:
