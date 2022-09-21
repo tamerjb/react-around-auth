@@ -5,11 +5,37 @@
     padding: 45px 0 0 0;
 }
 
+.header__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
 .header__logo {
     max-width: 173px;
     max-height: 33px;
     margin-bottom: 41px;
     padding: 0;
+}
+
+.header__menu-button {
+    background: transparent;
+    border: none;
+    display: none;
+    cursor: pointer;
+}
+
+.header__mobile-menu {
+    display: none;
+}
+
+.header__mobile-menu_opened {
+    display: flex;
+    flex-direction: column;
+}
+
+.header__close-icon {
+    width: 25px;
 }
 
 @media screen and (max-width: 524px) {

@@ -8,6 +8,8 @@
     "@testing-library/user-event": "^13.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-loader-spinner": "^5.3.4",
+    "react-router-dom": "^5.3.3",
     "react-scripts": "^2.1.3",
     "web-vitals": "^2.1.4"
   },
@@ -16,8 +18,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-       "predeploy": "npm run build",
-   "deploy": "gh-pages -d build"
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": [
@@ -37,8 +39,9 @@
       "last 1 safari version"
     ]
   },
-   "homepage": "https://tamerjb.github.io/around-react",
+  "homepage": "https://tamerjb.github.io/around-react",
   "devDependencies": {
+    "eslint": "^5.6.0",
     "gh-pages": "^4.0.0"
   }
 }
