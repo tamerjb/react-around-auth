@@ -40,9 +40,7 @@
     box-sizing: border-box;
 }
 
-.auth-form__input::placeholder {
-    color: rgba(204, 204, 204, 1);
-}
+
 
 .auth-form__input:focus {
     outline: none;
@@ -76,6 +74,11 @@
     display: block;
 }
 
+.auth-form__submit-button:hover {
+    transition: .3s linear;
+    transform: scale(1.1);
+}
+
 .auth-form__footer-text {
     padding: 15px 0 0;
     margin: 0;
@@ -89,4 +92,8 @@
 .auth-form__footer-link {
     text-decoration: none;
     color: #fff;
+}
+
+.auth-form__footer-link:hover {
+    color: green;
 }
