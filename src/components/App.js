@@ -1,11 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BrowserRouter as Router,
-  Route,
-  Switch,
-  Redirect,
-  useHistory,
-} from 'react-router-dom';
+import { Route, Switch, Redirect, useHistory } from 'react-router-dom';
 import Header from './Header';
 import Main from './Main';
 import Footer from './Footer';
@@ -281,41 +275,39 @@ function App() {
           email={userData.email}
           handleSignout={handleSignout}
         />
-        <Router>
-          <Switch>
-            <ProtectedRoute
-              exact
-              path='/react-around-auth'
-              loggedIn={loggedIn}
-              isCheckingToken={isCheckingToken}
-            >
-              <Main
-                onEditProfileClick={handleEditProfileClick}
-                onAddPlaceClick={handleAddPlaceClick}
-                onEditAvatarClick={handleEditAvatarClick}
-                onCardClick={handleCardClick}
-                onDeleteClick={handleDeleteClick}
-                onCardLike={handleCardLike}
-                cards={cards}
-              />
-            </ProtectedRoute>
-            <Route path='/signup'>
-              <Register handleRegister={handleRegister} />
-            </Route>
+        <Switch>
+          <ProtectedRoute
+            exact
+            path='/react-around-auth'
+            loggedIn={loggedIn}
+            isCheckingToken={isCheckingToken}
+          >
+            <Main
+              onEditProfileClick={handleEditProfileClick}
+              onAddPlaceClick={handleAddPlaceClick}
+              onEditAvatarClick={handleEditAvatarClick}
+              onCardClick={handleCardClick}
+              onDeleteClick={handleDeleteClick}
+              onCardLike={handleCardLike}
+              cards={cards}
+            />
+          </ProtectedRoute>
+          <Route path='/signup'>
+            <Register handleRegister={handleRegister} />
+          </Route>
 
-            <Route path='/signin'>
-              <Login handleLogin={handleLogin} />
-            </Route>
+          <Route path='/signin'>
+            <Login handleLogin={handleLogin} />
+          </Route>
 
-            <Route>
-              {loggedIn ? (
-                <Redirect to='/react-around-auth' />
-              ) : (
-                <Redirect to='/signin' />
-              )}
-            </Route>
-          </Switch>
-        </Router>
+          <Route>
+            {loggedIn ? (
+              <Redirect to='/react-around-auth' />
+            ) : (
+              <Redirect to='/signin' />
+            )}
+          </Route>
+        </Switch>
 
         <Footer />
         <EditProfilePopup

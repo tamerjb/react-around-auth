@@ -2,22 +2,52 @@ import React, { useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../images/around.svg';
-import Navbar from './Navbar';
 
 const Header = ({ loggedIn, email, handleSignout }) => {
-  // const location = useLocation();
-  // console.log(location);
-  // const isLogin = location.pathname === '/signin';
-  // const isRegister = location.pathname === '/signup';
+  const location = useLocation();
+  console.log(location);
+  const isLogin = location.pathname === '/signin';
+  const isRegister = location.pathname === '/signup';
+
   return (
     <header className='header'>
       <div className='header__container'>
         <img src={logo} alt='Around the US Logo' className='header__logo' />
-        {/* <Navbar
-          loggedIn={loggedIn}
-          email={email}
-          handleSignout={handleSignout}
-        /> */}
+
+        <nav className='header_navbar'>
+          <ul
+            className={`header__links header__links_desktop ${
+              isLogin || isRegister ? 'header__links_signup-login-page' : ''
+            }`}
+          >
+            {isLogin && (
+              <li className='header__link-item'>
+                <Link to='/signup' className='header__link'>
+                  Sign up
+                </Link>
+              </li>
+            )}
+            {isRegister && (
+              <li className='header__link-item'>
+                <Link to='/signin' className='header__link'>
+                  Log in
+                </Link>
+              </li>
+            )}
+            {loggedIn && (
+              <li className='header__link-item'>
+                <Link
+                  to='/signin'
+                  className='header__link'
+                  onClick={handleSignout}
+                >
+                  Log out
+                </Link>
+              </li>
+            )}
+            {loggedIn && <li className='header__link-item'>{email}</li>}
+          </ul>
+        </nav>
       </div>
     </header>
   );
