@@ -1,4 +1,6 @@
-# Project 14: Around The U.S.
+# Project 14: Around the U.S. authentication and authorization — specifically front-end authorization in React.
+
+##
 
 This about authorization and registration on the frontend with React. The frontend built in different project, you can check it out : https://github.com/tamerjb/around-react
 authorization\registration\token requests all go through to the server running on https://register.nomoreparties.co.
@@ -21,10 +23,10 @@ When the user login:
 
 ### Project features
 
-React JS
--Authentication, Authorization, Identication
--Javascript
--ES6
--localStorage data manipulation
+1. React JS
+2. Authentication, Authorization, Identication
+3. Javascript
+4. ES6
+5. localStorage data manipulation
 
 ## Developer: Tamir JB
