@@ -39,7 +39,7 @@
       "last 1 safari version"
     ]
   },
-  "homepage": "https://tamerjb.github.io/around-react",
+  "homepage": "https://tamerjb.github.io/react-around-auth",
   "devDependencies": {
     "eslint": "^5.6.0",
     "gh-pages": "^4.0.0"
