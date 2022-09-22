@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 import logo from '../images/around.svg';
@@ -16,7 +16,7 @@ const Header = ({ loggedIn, email, handleSignout }) => {
 
         <nav className='header_navbar'>
           <ul
-            className={`header__links header__links_desktop ${
+            className={`header__links ${
               isLogin || isRegister ? 'header__links_signup-login-page' : ''
             }`}
           >

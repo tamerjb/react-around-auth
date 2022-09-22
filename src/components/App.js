@@ -221,6 +221,7 @@ function App() {
     }
   }, []);
   function handleRegister({ email, password }) {
+    setIsLoading(true);
     auth
       .register(email, password)
       .then((res) => {
@@ -237,10 +238,12 @@ function App() {
       })
       .finally(() => {
         setIsInfoTooltipOpen(true);
+        setIsLoading(false);
       });
   }
 
   function handleLogin({ email, password }) {
+    setIsLoading(true);
     auth
       .login(email, password)
       .then((res) => {
@@ -258,6 +261,7 @@ function App() {
       })
       .finally(() => {
         setIsCheckingToken(false);
+        setIsLoading(false);
       });
   }
 
@@ -297,7 +301,7 @@ function App() {
           </Route>
 
           <Route path='/signin'>
-            <Login handleLogin={handleLogin} />
+            <Login handleLogin={handleLogin} isLoading={isLoading} />
           </Route>
 
           <Route>

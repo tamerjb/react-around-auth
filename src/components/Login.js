@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const Login = ({ handleLogin }) => {
+const Login = ({ handleLogin, isLoading }) => {
   //use state object for email and password
   const [data, setData] = useState({
     email: '',
@@ -48,7 +48,7 @@ const Login = ({ handleLogin }) => {
         <div className='auth-form__footer'>
           <div className='auth-form__footer-wrapper'>
             <button type='submit' className='auth-form__submit-button'>
-              Log in
+              {isLoading ? 'Logging In...' : 'Log in'}
             </button>
             <p className='auth-form__footer-text'>
               Not a member yet?{' '}

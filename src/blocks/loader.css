@@ -1,9 +1,0 @@
-.loader {
-
-    height: 40vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin: 0 auto;
-    width: fit-content;
-}

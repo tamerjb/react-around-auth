@@ -11,7 +11,7 @@ const InfoTooltip = ({ isOpen, onClose, type }) => {
     if (isOpen) {
       const timer = setTimeout(() => {
         onClose();
-      }, 2500);
+      }, 3500);
       return () => clearTimeout(timer);
     }
   }, [isOpen]);

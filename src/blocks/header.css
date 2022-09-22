@@ -41,7 +41,7 @@
 .header__links {
     display: flex;
     flex-direction: row-reverse;
-    width: 100%;
+    max-width: 100%;
     gap: 24px;
     padding: 0;
     list-style: none;
@@ -53,7 +53,7 @@
     flex-direction: column;
     justify-content: center;
     text-align: center;
-    width: 100%;
+    max-width: 100%;
 }
 
 .header__link {
@@ -87,15 +87,37 @@
     width: 25px;
 }
 
+@media screen and (max-width: 895px) {
+    .header_navbar {
+        padding-right: 30px;
+    }
+}
+
 @media screen and (max-width: 524px) {
     .header {
         max-width: 100%;
         margin-top: 28px;
+        padding: 0;
     }
 
     .header__logo {
         max-width: 126px;
         max-height: 24px;
-        margin: 0 auto 32px 27px;
+        margin: 0 auto 0 30px;
+        padding-bottom: 20px;
     }
+
+    .header_navbar {
+        padding-right: 30px;
+    }
+
+    .header__links {
+        flex-direction: column-reverse;
+    }
+
+    .header__link-item {
+        text-align: right;
+    }
+
+
 }

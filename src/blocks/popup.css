@@ -42,6 +42,7 @@
     padding: 34px;
     border-radius: 10px;
     position: relative;
+    max-width: 100%;
 
 }
 
@@ -115,11 +116,17 @@
     line-height: 15px;
 }
 
-@media screen and (max-width: 400px) {
-    .popup__button-close {
+@media screen and (max-width: 570px) {
+    .popup__close-button {
         background-size: 20px 20px;
-        top: -49px;
-        right: -7px;
+        top: -30px;
+        right: -20px;
+    }
+
+    .popup__container {
+        gap: 76px;
+        padding: 25px 22px;
+        max-width: 280px;
     }
 }
 
@@ -133,6 +140,7 @@
     .popup__container {
         gap: 76px;
         padding: 25px 22px;
+        max-width: 280px;
     }
 
     .popup__title {
