@@ -1,7 +1,7 @@
 {
-  "main.css": "/react-around-auth/static/css/main.95d43ed1.chunk.css",
-  "main.js": "/react-around-auth/static/js/main.0a485c4f.chunk.js",
-  "main.js.map": "/react-around-auth/static/js/main.0a485c4f.chunk.js.map",
+  "main.css": "/react-around-auth/static/css/main.f6c92e52.chunk.css",
+  "main.js": "/react-around-auth/static/js/main.c0bb79d8.chunk.js",
+  "main.js.map": "/react-around-auth/static/js/main.c0bb79d8.chunk.js.map",
   "static/js/1.6d901b3e.chunk.js": "/react-around-auth/static/js/1.6d901b3e.chunk.js",
   "static/js/1.6d901b3e.chunk.js.map": "/react-around-auth/static/js/1.6d901b3e.chunk.js.map",
   "static/js/2.fab4700e.chunk.js": "/react-around-auth/static/js/2.fab4700e.chunk.js",
@@ -11,9 +11,9 @@
   "static/media/around.svg": "/react-around-auth/static/media/around.8f7611ae.svg",
   "static/media/successful_icon.svg": "/react-around-auth/static/media/successful_icon.e38b395c.svg",
   "static/media/unsuccessful_icon.svg": "/react-around-auth/static/media/unsuccessful_icon.4072126c.svg",
-  "static/media/index.css": "/react-around-auth/static/media/Inter-Black.661569af.woff2",
-  "static/css/main.95d43ed1.chunk.css.map": "/react-around-auth/static/css/main.95d43ed1.chunk.css.map",
+  "static/media/index.css": "/react-around-auth/static/media/Inter-Black.d0b121f3.woff",
+  "static/css/main.f6c92e52.chunk.css.map": "/react-around-auth/static/css/main.f6c92e52.chunk.css.map",
   "index.html": "/react-around-auth/index.html",
-  "precache-manifest.daea130d9d4a67fb1912bfe0c70abf6d.js": "/react-around-auth/precache-manifest.daea130d9d4a67fb1912bfe0c70abf6d.js",
+  "precache-manifest.c2544e00c13088e825adeaa1dea903ff.js": "/react-around-auth/precache-manifest.c2544e00c13088e825adeaa1dea903ff.js",
   "service-worker.js": "/react-around-auth/service-worker.js"
 }

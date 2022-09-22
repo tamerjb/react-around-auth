@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "0a485c4f7ee5ddbe9d8f",
-    "url": "/react-around-auth/static/css/main.95d43ed1.chunk.css"
+    "revision": "c0bb79d8f7e8801e4f10",
+    "url": "/react-around-auth/static/css/main.f6c92e52.chunk.css"
   },
   {
-    "revision": "0a485c4f7ee5ddbe9d8f",
-    "url": "/react-around-auth/static/js/main.0a485c4f.chunk.js"
+    "revision": "c0bb79d8f7e8801e4f10",
+    "url": "/react-around-auth/static/js/main.c0bb79d8.chunk.js"
   },
   {
     "revision": "6d901b3e33806cc9ca52",
@@ -40,16 +40,8 @@ self.__precacheManifest = [
     "url": "/react-around-auth/static/media/Inter-Regular.dc131113.woff2"
   },
   {
-    "revision": "75db5319e7e87c587019a5df08d7272c",
-    "url": "/react-around-auth/static/media/Inter-Medium.75db5319.woff2"
-  },
-  {
     "revision": "c0638bea87a05fdfa2bb3bba2efe54e4",
     "url": "/react-around-auth/static/media/Inter-Medium.c0638bea.woff"
-  },
-  {
-    "revision": "d0b121f3a9d3d88afdfd6902d31ee9a0",
-    "url": "/react-around-auth/static/media/Inter-Black.d0b121f3.woff"
   },
   {
     "revision": "9293aa8fd18af383d6eb4eeeecab483f",
@@ -68,19 +60,27 @@ self.__precacheManifest = [
     "url": "/react-around-auth/static/media/like_filled.ef38b085.svg"
   },
   {
-    "revision": "6bfdb35467f51d3ba1f70f8d4a9c2b59",
-    "url": "/react-around-auth/static/media/edit_icon.6bfdb354.svg"
+    "revision": "75db5319e7e87c587019a5df08d7272c",
+    "url": "/react-around-auth/static/media/Inter-Medium.75db5319.woff2"
   },
   {
     "revision": "b2fce4ac45f3d116cd48ec8d068ab723",
     "url": "/react-around-auth/static/media/plus_icon.b2fce4ac.svg"
   },
   {
+    "revision": "6bfdb35467f51d3ba1f70f8d4a9c2b59",
+    "url": "/react-around-auth/static/media/edit_icon.6bfdb354.svg"
+  },
+  {
     "revision": "661569afe57a38e1529a775a465da20b",
     "url": "/react-around-auth/static/media/Inter-Black.661569af.woff2"
   },
   {
-    "revision": "1f919b1fa5d6e6b00485766fe8d03ca0",
+    "revision": "d0b121f3a9d3d88afdfd6902d31ee9a0",
+    "url": "/react-around-auth/static/media/Inter-Black.d0b121f3.woff"
+  },
+  {
+    "revision": "631c3e516f8f39ea8c40be7412fa6fe3",
     "url": "/react-around-auth/index.html"
   }
 ];
