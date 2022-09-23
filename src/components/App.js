@@ -33,14 +33,20 @@ function App() {
   // loading button Text
   const [isLoading, setIsLoading] = useState(false);
   const [infoTooltipType, setInfoTooltipType] = useState('');
+  const [modalOpen, toggleModal] = useState(false);
+
+  const modaltoggle = () => {
+    toggleModal(!modalOpen);
+  };
 
   const closeAllPopups = () => {
-    setIsEditAvatarPopupOpen(false);
-    setIsEditProfilePopupOpen(false);
-    setIsAddPlacePopupOpen(false);
-    setIsImagePreviewOpen(false);
-    setIsDeletePopupOpen(false);
-    setIsInfoTooltipOpen(false);
+    // setIsEditAvatarPopupOpen(false);
+    // setIsEditProfilePopupOpen(false);
+    // setIsAddPlacePopupOpen(false);
+    // setIsImagePreviewOpen(false);
+    // setIsDeletePopupOpen(false);
+    // setIsInfoTooltipOpen(false);
+    toggleModal(false);
   };
   //state for loggedIn
   const [loggedIn, setLoggedIn] = useState(false);
@@ -184,18 +190,18 @@ function App() {
     };
   }, []);
   //Overlay  close Modual
-  useEffect(() => {
-    const handleMouseDown = (event) => {
-      if (event.target.classList.contains('popup')) {
-        closeAllPopups();
-      }
-    };
+  // useEffect(() => {
+  //   const handleMouseDown = (event) => {
+  //     if (event.target.classList.contains('popup')) {
+  //       closeAllPopups();
+  //     }
+  //   };
 
-    document.addEventListener('mousedown', handleMouseDown);
-    return () => {
-      document.removeEventListener('mousedown', handleMouseDown);
-    };
-  }, []);
+  //   document.addEventListener('mousedown', handleMouseDown);
+  //   return () => {
+  //     document.removeEventListener('mousedown', handleMouseDown);
+  //   };
+  // }, []);
   //check token
   useEffect(() => {
     const jwt = localStorage.getItem('jwt');
@@ -288,7 +294,7 @@ function App() {
           >
             <Main
               onEditProfileClick={handleEditProfileClick}
-              onAddPlaceClick={handleAddPlaceClick}
+              onAddPlaceClick={modaltoggle}
               onEditAvatarClick={handleEditAvatarClick}
               onCardClick={handleCardClick}
               onDeleteClick={handleDeleteClick}
@@ -322,7 +328,7 @@ function App() {
         />
         <AddPlacePopup
           isLoading={isLoading}
-          isOpen={isAddPlacePopupOpen}
+          isOpen={modalOpen}
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
         />
