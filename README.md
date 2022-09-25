@@ -9,13 +9,13 @@ authorization\registration\token requests all go through to the server running o
 
 To protect the site with a protected route that will only show if the user is logged in.user can view only if :
 
-1.  new visitor and registered into the signup form, and then logged in with the same credentials in the login form
-2.  returning visitor, and a jwt token that is stored in the users localStorage is verified and returns valid information. If not, then the token was changed.
+- new visitor and registered into the signup form, and then logged in with the same credentials in the login form
+- returning visitor, and a jwt token that is stored in the users localStorage is verified and returns valid information. If not, then the token was changed.
 
 When the user login:
 
-1. will be shown an information tooltip that will inform them of the login status whether it succceeded or failed
-2. In the event of successful login, the user will also be redirected to the homepage.
+- will be shown an information tooltip that will inform them of the login status whether it succceeded or failed
+- In the event of successful login, the user will also be redirected to the homepage.
 
 #### Design File Used:
 
