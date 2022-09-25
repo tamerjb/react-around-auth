@@ -21,7 +21,6 @@ const Register = ({ handleRegister }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const { email, password } = data;
-    //register(email, password);
     handleRegister({ email, password });
   };
 

@@ -17,7 +17,14 @@ import InfoTooltip from './InfoTooltip';
 import * as auth from '../utils/auth';
 
 function App() {
-  //set States
+  ////////////////////////////////////////////////////////////
+  //////////////// OtherHooks ////////////////////////////////
+  ////////////////////////////////////////////////////////////
+  const history = useHistory();
+
+  ////////////////////////////////////////////////////////////
+  //////////////// Use State Hooks ///////////////////////////
+  ////////////////////////////////////////////////////////////
   const [isEditAvatarPopupOpen, setIsEditAvatarPopupOpen] = useState(false);
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
   const [isAddPlacePopupOpen, setIsAddPlacePopupOpen] = useState(false);
@@ -30,24 +37,8 @@ function App() {
   });
   const [cards, setCards] = useState([]);
   const [currentUser, setCurrentUser] = useState({});
-  // loading button Text
   const [isLoading, setIsLoading] = useState(false);
   const [infoTooltipType, setInfoTooltipType] = useState('');
-  const [modalOpen, toggleModal] = useState(false);
-
-  const modaltoggle = () => {
-    toggleModal(!modalOpen);
-  };
-
-  const closeAllPopups = () => {
-    // setIsEditAvatarPopupOpen(false);
-    // setIsEditProfilePopupOpen(false);
-    // setIsAddPlacePopupOpen(false);
-    // setIsImagePreviewOpen(false);
-    // setIsDeletePopupOpen(false);
-    // setIsInfoTooltipOpen(false);
-    toggleModal(false);
-  };
   //state for loggedIn
   const [loggedIn, setLoggedIn] = useState(false);
 
@@ -58,19 +49,85 @@ function App() {
   //state for checking token
   const [isCheckingToken, setIsCheckingToken] = useState(true);
 
-  //history hook
-  const history = useHistory();
+  ////////////////////////////////////////////////////////////
+  //////////////// UseEffect Hooks ///////////////////////////
+  ////////////////////////////////////////////////////////////
+  useEffect(() => {
+    api
+      .getInitialCards()
+      .then((res) => {
+        setCards(res);
+      })
+      .catch(console.log);
+  }, []);
 
-  //Evenet Handlers
+  useEffect(() => {
+    api
+      .getUserInfo()
+      .then((user) => {
+        setCurrentUser(user);
+      })
+      .catch(console.log);
+  }, []);
+  const handleUpdateUser = ({ name, about }) => {
+    setIsLoading(true);
+    api
+      .setUserInfo({ name, about })
+      .then((res) => {
+        setCurrentUser(res);
+        closeAllPopups();
+      })
+      .catch(console.log)
+      .finally(() => {
+        setIsLoading(false);
+      });
+  };
+
+  //check token
+  useEffect(() => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth
+        .checkToken(jwt)
+        .then((res) => {
+          if (res.data._id) {
+            setLoggedIn(true);
+            setUserData({ email: res.data.email });
+            history.push('/react-around-auth');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          history.push('/signin');
+        })
+        .finally(() => {
+          setIsCheckingToken(false);
+        });
+    } else {
+      setIsCheckingToken(false);
+    }
+  }, []);
+  ////////////////////////////////////////////////////////////
+  //////////////// Event Handlers ///////////////////////////
+  ////////////////////////////////////////////////////////////
+
+  const closeAllPopups = () => {
+    setIsEditAvatarPopupOpen(false);
+    setIsEditProfilePopupOpen(false);
+    setIsAddPlacePopupOpen(false);
+    setIsImagePreviewOpen(false);
+    setIsDeletePopupOpen(false);
+    setIsInfoTooltipOpen(false);
+  };
 
   const handleEditAvatarClick = () => {
-    setIsEditAvatarPopupOpen(true);
+    setIsEditAvatarPopupOpen(!isEditAvatarPopupOpen);
   };
   const handleEditProfileClick = () => {
-    setIsEditProfilePopupOpen(true);
+    setIsEditProfilePopupOpen(!isEditProfilePopupOpen);
   };
   const handleAddPlaceClick = () => {
-    setIsAddPlacePopupOpen(true);
+    setIsAddPlacePopupOpen(!isAddPlacePopupOpen);
   };
   const handleDeleteClick = (card) => {
     setIsDeletePopupOpen(true);
@@ -83,22 +140,6 @@ function App() {
       link: card.link,
     });
   };
-  function handleCardLike(card) {
-    // Check one more time if this card was already liked
-    const isLiked = card.likes.some((user) => user._id === currentUser._id);
-
-    // Send a request to the API and getting the updated card data
-    api
-      .changeLikeCardStatus(card._id, !isLiked)
-      .then((newCard) => {
-        setCards((cards) =>
-          cards.map((currentCard) =>
-            currentCard._id === card._id ? newCard : currentCard
-          )
-        );
-      })
-      .catch(console.log);
-  }
   function handleCardDelete(e) {
     e.preventDefault();
     setIsLoading(true);
@@ -143,89 +184,6 @@ function App() {
       });
   }
 
-  //Api Calls
-  useEffect(() => {
-    api
-      .getInitialCards()
-      .then((res) => {
-        setCards(res);
-      })
-      .catch(console.log);
-  }, []);
-
-  useEffect(() => {
-    api
-      .getUserInfo()
-      .then((user) => {
-        setCurrentUser(user);
-      })
-      .catch(console.log);
-  }, []);
-  const handleUpdateUser = ({ name, about }) => {
-    setIsLoading(true);
-    api
-      .setUserInfo({ name, about })
-      .then((res) => {
-        setCurrentUser(res);
-        closeAllPopups();
-      })
-      .catch(console.log)
-      .finally(() => {
-        setIsLoading(false);
-      });
-  };
-
-  //Escape key close Modual
-  useEffect(() => {
-    const handleKeyDown = (event) => {
-      if (event.key === 'Escape') {
-        closeAllPopups();
-      }
-    };
-
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('keydown', handleKeyDown);
-    };
-  }, []);
-  //Overlay  close Modual
-  // useEffect(() => {
-  //   const handleMouseDown = (event) => {
-  //     if (event.target.classList.contains('popup')) {
-  //       closeAllPopups();
-  //     }
-  //   };
-
-  //   document.addEventListener('mousedown', handleMouseDown);
-  //   return () => {
-  //     document.removeEventListener('mousedown', handleMouseDown);
-  //   };
-  // }, []);
-  //check token
-  useEffect(() => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth
-        .checkToken(jwt)
-        .then((res) => {
-          if (res.data._id) {
-            setLoggedIn(true);
-            setUserData({ email: res.data.email });
-            history.push('/react-around-auth');
-          }
-        })
-        .catch((err) => {
-          console.log(err);
-          history.push('/signin');
-        })
-        .finally(() => {
-          setIsCheckingToken(false);
-        });
-    } else {
-      setIsCheckingToken(false);
-    }
-  }, []);
   function handleRegister({ email, password }) {
     setIsLoading(true);
     auth
@@ -276,6 +234,21 @@ function App() {
     localStorage.removeItem('jwt');
     history.push('/signin');
   }
+  function handleCardLike(card) {
+    // Check one more time if this card was already liked
+    const isLiked = card.likes.some((user) => user._id === currentUser._id);
+    // Send a request to the API and getting the updated card data
+    api
+      .changeLikeCardStatus(card._id, !isLiked)
+      .then((newCard) => {
+        setCards((cards) =>
+          cards.map((currentCard) =>
+            currentCard._id === card._id ? newCard : currentCard
+          )
+        );
+      })
+      .catch(console.log);
+  }
 
   return (
     <div className='body'>
@@ -294,7 +267,7 @@ function App() {
           >
             <Main
               onEditProfileClick={handleEditProfileClick}
-              onAddPlaceClick={modaltoggle}
+              onAddPlaceClick={handleAddPlaceClick}
               onEditAvatarClick={handleEditAvatarClick}
               onCardClick={handleCardClick}
               onDeleteClick={handleDeleteClick}
@@ -325,12 +298,14 @@ function App() {
           onClose={closeAllPopups}
           onUpdateUser={handleUpdateUser}
           isLoading={isLoading}
+          name='avatar'
         />
         <AddPlacePopup
           isLoading={isLoading}
-          isOpen={modalOpen}
+          isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
           onAddPlaceSubmit={handleAddPlaceSubmit}
+          closeOverlay={closeAllPopups}
         />
 
         <EditAvatarPopup
@@ -351,6 +326,7 @@ function App() {
           card={selectedCard}
           isOpen={isImagePreviewOpen}
           onClose={closeAllPopups}
+          name='popup__preview-container'
         />
         <InfoTooltip
           isOpen={isInfoTooltipOpen}

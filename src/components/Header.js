@@ -5,7 +5,6 @@ import logo from '../images/around.svg';
 
 const Header = ({ loggedIn, email, handleSignout }) => {
   const location = useLocation();
-  console.log(location);
   const isLogin = location.pathname === '/signin';
   const isRegister = location.pathname === '/signup';
 

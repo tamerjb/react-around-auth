@@ -1,22 +1,17 @@
-import React from "react";
+import React from 'react';
+import Popup from './Popup';
 
 const ImagePopup = (props) => {
   return (
-    <div className={`popup-prev popup ${props.isOpen ? "popup_opened" : ""}`}>
-      <div className="popup__preview-container">
-        <button
-          className="popup__close-button"
-          onClick={props.onClose}
-          type="button"
-        />
-        <img
-          src={props.card.link}
-          alt={props.card.name}
-          className="popup__image"
-        />
-        <p className="popup__caption">{props.card.name}</p>
-      </div>
-    </div>
+    <Popup isOpen={props.isOpen} name={props.name} onClose={props.onClose}>
+      <p className='popup__caption'>{props.card.name}</p>
+
+      <img
+        src={props.card.link}
+        alt={`A beautiful scene in ${props.card.name}`}
+        className='popup__image'
+      />
+    </Popup>
   );
 };
 
